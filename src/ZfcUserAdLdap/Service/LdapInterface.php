@@ -25,7 +25,6 @@ class LdapInterface {
 
     public function __construct($config) {
 	    $this->config = $config;
-
         try {
             $this->bind();
         } catch (\Exception $exc) {
@@ -44,11 +43,14 @@ class LdapInterface {
         return 1;
     }
 
+    /**
+     * bind
+     * Bind $this->adldap to a valid LDAP handle
+     */
     public function bind() {
         include (dirname(__FILE__) . "/../../../vendor/adLDAP/src/adLDAP.php");
         try {
             $this->adldap = new \adLDAP($this->config);
-            //echo 'Binded to ' . $this->adldap->getConnectedController() .'<br/>';
         }
         catch (\adLDAPException $e) {
             echo $e; 
@@ -56,14 +58,18 @@ class LdapInterface {
         }
     }
 
+    /**
+     * 
+     * @param string $username
+     * @param string $password
+     * @return User information if success, false if not. array|boolean
+     */
     function authenticate($username, $password) {
         $auth = $this->adldap->authenticate($username, $password);
-        var_dump($auth);
-        echo '<br/>';
+        
         if ($auth){
             return $this->adldap->user()->info($username);
         } 
-        
         return false;
     }
 

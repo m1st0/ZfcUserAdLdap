@@ -52,6 +52,15 @@ class Module {
                             $sm->get('ldap_interface'), $sm->get('zfcuser_module_options')
                     );
                 },
+                'zfcuser_user_db_mapper' => function ($sm) {
+                    $options = $sm->get('zfcuser_module_options');
+                    $mapper = new \ZfcUser\Mapper\User();
+                    $mapper->setDbAdapter($sm->get('zfcuser_zend_db_adapter'));
+                    $entityClass = $options->getUserEntityClass();
+                    $mapper->setEntityPrototype(new $entityClass);
+                    $mapper->setHydrator(new \ZfcUser\Mapper\UserHydrator());
+                    return $mapper;
+                },
             ),
         );
     }

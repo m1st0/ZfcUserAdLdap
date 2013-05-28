@@ -45,12 +45,20 @@ class Ldap implements AdapterChain, ServiceManagerAwareInterface {
      */
     protected $storage;
     
+    /**
+     * authenticate Function.
+     * Fired by ChainableAdapter.
+     * 
+     * Checks the user login via LDAP, and adds user into DB if he exists.
+     * 
+     * @see \ZfcUser\Authentication\Adapter\ChainableAdapter::authenticate()
+     */
     public function authenticate(AuthEvent $e) {
-        
+
         $mapper = new \ZfcUserAdLdap\Mapper\User(
                 $this->getServiceManager()->get('ldap_interface'), $this->getServiceManager()->get('zfcuser_module_options')
         );
-        
+
         $this->setMapper($mapper);
 
         $identity = $e->getRequest()->getPost()->get('identity');
@@ -68,14 +76,30 @@ class Ldap implements AdapterChain, ServiceManagerAwareInterface {
             return false;
         }
         
-        $e->setIdentity($userObject->getEntity());
-
+        $userEntity = $userObject->getEntity();
+        $e->setIdentity($userEntity);
+        
+        $userDbMapper = $this->serviceManager->get('zfcuser_user_db_mapper');
+        
+        if ($userDbMapper->findByUsername($userEntity->getUsername()) === false) {
+            //This user has been logged in, but he's not yet in the database.
+            //Lets create the original user Entity
+            $userDbObject = new \ZfcUser\Entity\User();
+            
+            $userDbObject->setUsername($userEntity->getUsername());
+            $userDbObject->setEmail($userEntity->getEmail());
+            $userDbObject->setDisplayName($userEntity->getDisplayName());
+            $userDbObject->setPassword(''); //Otherwise the query won't work.
+            
+            //And add him
+            $userDbMapper->insert($userDbObject, 'user');
+        } 
+        
         $this->setSatisfied(true);
         $storage = $this->getStorage()->read();
         $storage['identity'] = $e->getIdentity();
         $this->getStorage()->write($storage);
         $e->setCode(AuthenticationResult::SUCCESS)->setMessages(array('Authentication successful.'));
-
     }
 
     /**
@@ -86,6 +110,7 @@ class Ldap implements AdapterChain, ServiceManagerAwareInterface {
      * @return Storage\StorageInterface
      */
     public function getStorage() {
+            
         if (null === $this->storage) {
             $this->setStorage(new Storage\Session(get_called_class()));
         }
@@ -110,6 +135,7 @@ class Ldap implements AdapterChain, ServiceManagerAwareInterface {
      * @return bool
      */
     public function isSatisfied() {
+        
         $storage = $this->getStorage()->read();
         return (isset($storage['is_satisfied']) && true === $storage['is_satisfied']);
     }

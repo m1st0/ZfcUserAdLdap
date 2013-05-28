@@ -16,6 +16,9 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class LdapServiceFactory implements FactoryInterface {
 
+    /**
+     * @see \Zend\ServiceManager\FactoryInterface::createService()
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $config = $serviceLocator->get('Config');
         return new LdapInterface($config['ldap']);
