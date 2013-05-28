@@ -35,6 +35,12 @@ The following steps are necessary to get this module working
     ),
       </pre>
 
+  5. Edit the line in vendor/ZfcUser/src/Zfcuser/Authentication/Adapter/AdapterChainServiceFactory.php
+      $adapter = $serviceLocator->get('ZfcUser\Authentication\Adapter\Db');
+      To:
+      $adapter = $serviceLocator->get('ZfcUserAdLdap\Authentication\Adapter\Ldap');
+      
+      
 ## Additional Information
 
 This application does not log anything. It simply spurts out exceptions if 
