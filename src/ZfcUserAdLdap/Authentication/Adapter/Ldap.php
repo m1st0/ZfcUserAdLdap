@@ -57,19 +57,6 @@ class Ldap implements AdapterChain, ServiceManagerAwareInterface {
         $credential = $e->getRequest()->getPost()->get('credential');
         
         $userObject = NULL;
-        /*
-         * In some special case scenarios some LDAP providers allow LDAP
-         * logins via email address both as uid or as mail address lookup,
-         * so to provide an interface to both we do a validator instead of
-         * a loop to verify if it's an email address or not and pull the user.
-         *
-         * Authentication will then be done on the *actual* username set in LDAP
-         * which in some cases may be case sensitive which could cause an issue
-         * where users do not exist if their email was created with upper case
-         * letters and the user types in lower case.
-         *
-         * $fields = $this->getOptions()->getAuthIdentityFields();
-         */
         
         $userObject = $this->getMapper()->authenticate($identity, $credential);
         

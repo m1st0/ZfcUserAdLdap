@@ -33,6 +33,21 @@ class User extends ZfcUserMapper
         $this->entity = new $entityClass();
     }
 
+    public function findByUsername($username)
+    {
+        return $this->entity;
+    }
+
+    public function findById($id)
+    {
+        return $this->entity;
+    }
+
+    public function findByEmail($email)
+    {
+        return $this->entity;
+    }
+    
     public function getEntity()
     {
         return $this->entity;
