@@ -1,0 +1,34 @@
+{
+    "name": "robquistnl/zfcuseradldap",
+    "description": "Zend Framework 2 ZfcUser LDAP Authentication - Composer compatible.",
+    "type": "library",
+    "keywords": ["zf2","zfcuser","ldap"],
+    "homepage": "https://github.com/m1st0/ZfcUserAdLdap",
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "Rob Quist",
+            "email": "rob@dukesoft.nl",
+            "homepage": "http://www.dukesoft.nl/",
+            "role": "Master"
+        },
+        {
+          "name": "Maulik Mistry",
+          "email": "mistry01@gmail.com",
+          "role": "Unknown"
+        }, 
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*",
+        "zf-commons/zfc-user": "0.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "ZfcUserAdLdap": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    }
+}
