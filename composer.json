@@ -1,5 +1,5 @@
 {
-    "name": "robquistnl/zfcuseradldap",
+    "name": "zfcuseradldap",
     "description": "Zend Framework 2 ZfcUser LDAP Authentication - Composer compatible.",
     "type": "library",
     "keywords": ["zf2","zfcuser","ldap"],
