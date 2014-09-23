@@ -13,9 +13,9 @@
             "role": "Master"
         },
         {
-          "name": "Maulik Mistry",
-          "email": "mistry01@gmail.com",
-          "role": "Unknown"
+            "name": "Maulik Mistry",
+            "email": "mistry01@gmail.com",
+            "role": "Developer"
         } 
     ],
     "require": {
