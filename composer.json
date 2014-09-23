@@ -16,7 +16,7 @@
           "name": "Maulik Mistry",
           "email": "mistry01@gmail.com",
           "role": "Unknown"
-        }, 
+        } 
     ],
     "require": {
         "php": ">=5.3.3",
