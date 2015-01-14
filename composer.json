@@ -11,13 +11,17 @@
             "email": "rob@dukesoft.nl",
             "homepage": "http://www.dukesoft.nl/",
             "role": "Master"
-        },
+        }
+    ],
+    "contributors": [
         {
             "name": "Maulik Mistry",
             "email": "mistry01@gmail.com",
-            "role": "Developer"
+            "alias": {
+                "github": "m1st0"
+	    }
         } 
-    ],
+     ],
      "repositories": [
        { "type": "vcs", "url": "https://github.com/Rich2k/adLDAP.git" }
      ],
@@ -25,7 +29,7 @@
          "php": ">=5.3.3",
          "zendframework/zendframework": "2.*",
          "zf-commons/zfc-user": "1.2.*",
-         "adldap/adldap": "dev-master#03b379fbdc23228b81c9ddd0f8a5f978bbaffa2d"
+         "adldap/adldap": "dev-master"
      },
     "autoload": {
         "psr-0": {
