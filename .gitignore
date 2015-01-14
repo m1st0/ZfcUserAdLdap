@@ -1,3 +1,8 @@
 .buildpath
 .project
 .settings
+vendor/
+/nbproject
+/.DS_Store
+/composer.phar
+/composer.lock

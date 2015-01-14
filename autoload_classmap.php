@@ -7,4 +7,5 @@ return array(
     //'ZfcUserAdLdap\Options\ModuleOptions'             => __DIR__ . '/src/ZfcUserAdLdap/Options/ModuleOptions.php',
     //'ZfcUserAdLdap\Service\LdapInterface'             => __DIR__ . '/src/ZfcUserAdLdap/Service/LdapInterface.php',
     //'ZfcUserAdLdap\ServiceFactory\LdapServiceFactory' => __DIR__ . '/src/ZfcUserAdLdap/ServiceFactory/LdapServiceFactory.php',
+    'adLDAP' => __DIR__ . '/vendor/adldap/adldap/src/adLDAP.php'
 );

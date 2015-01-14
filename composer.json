@@ -18,11 +18,15 @@
             "role": "Developer"
         } 
     ],
-    "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*",
-        "zf-commons/zfc-user": "1.2.*"
-    },
+     "repositories": [
+       { "type": "vcs", "url": "https://github.com/Rich2k/adLDAP.git" }
+     ],
+     "require": {
+         "php": ">=5.3.3",
+         "zendframework/zendframework": "2.*",
+         "zf-commons/zfc-user": "1.2.*",
+         "adldap/adldap": "dev-master#03b379fbdc23228b81c9ddd0f8a5f978bbaffa2d"
+     },
     "autoload": {
         "psr-0": {
             "ZfcUserAdLdap": "src/"
