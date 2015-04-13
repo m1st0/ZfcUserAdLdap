@@ -9,7 +9,7 @@
  */
 namespace ZfcUserAdLdap\Service;
 
-use \adLDAP\adLDAP;
+use adLDAP;
 
 class LdapInterface {
 

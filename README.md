@@ -2,9 +2,12 @@ ZfcUserLdap
 ================
 
 Zend Framework ZfcUser Extension to provide LDAP Authentication using the 
-ADLDAP PHP Class (http://adldap.sourceforge.net/)
+ADLDAP PHP Class (http://adldap.sourceforge.net/) with integrated ADLAP PHP Class updates.
 
 Structure based on ZfcUserLdap by Nitecon (https://github.com/Nitecon/zfcuser-ldap)
+
+Contributor m1st0 added Composer dependency management (https://getcomposer.org/) and the the ability
+to independently update adLDAP (https://github.com/Rich2k/adLDAP) accordingly using Composer updates.
 
 ## Features
 - Provides an adapter chain for LDAP authentication.

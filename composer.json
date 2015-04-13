@@ -35,9 +35,6 @@
         "psr-0": {
             "ZfcUserAdLdap": "src/"
         },
-	"psr-4": {
-		"adLDAP\\": "vendor/adldap/adldap/lib/adLDAP/"
-	},
         "classmap": [
             "Module.php"
         ]
