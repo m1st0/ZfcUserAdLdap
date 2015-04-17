@@ -9,7 +9,8 @@
  */
 namespace ZfcUserAdLdap\Service;
 
-use adLDAP;
+use adLDAP\adLDAP;
+use adLDAP\adLDAPException;
 
 class LdapInterface {
 
@@ -47,7 +48,7 @@ class LdapInterface {
         try {
             $this->adldap = new adLDAP($this->config);
         }
-        catch (\adLDAPException $e) {
+        catch (adLDAPException $e) {
             echo $e; 
             die;
         }
